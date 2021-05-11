@@ -68,9 +68,10 @@ let PasswordBtn = document.querySelector('#v1')
 PasswordBtn.addEventListener('click', logPassword)
 
 function logPassword() {
-    let meassage = document.createElement('span')
-    meassage.innerHTML = `<br>${credentials.password}`
-    document.body.append(meassage)
+    let message = document.createElement('span')
+    message.classList.add('color')
+    message.innerHTML = `<br>${credentials.password}`
+    document.body.append(message)
 }
 
 // link it to password - if message valid it's green?
