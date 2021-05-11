@@ -1,0 +1,9 @@
+.strong {
+    border: 2px solid chartreuse;
+    border-radius: 3px;
+}
+
+.weak { 
+    border: 2px solid #feca1d;
+    border-radius: 3px;
+}

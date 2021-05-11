@@ -22,6 +22,7 @@ registerForm.addEventListener('submit', function(e){
 
     usernameValidation()
     passwordValidation()
+    colorValidation()
 })
 
 function usernameValidation() {
@@ -45,6 +46,15 @@ function passwordValidation() {
         console.log(`Password needs to be a minnimum of 8 characters. Password needs to include the @ key. Password cannot includes any spaces.`)
     }
     
+}
+
+// think about toggling?
+function colorValidation() {
+    if (credentials.password.length > 8 && credentials.password.length < 15) {
+        registerForm.elements.password.classList.toggle('strong')
+    } else {
+        registerForm.elements.password.classList.toggle('weak')
+    }
 }
 
 

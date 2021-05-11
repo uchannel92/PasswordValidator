@@ -1,0 +1,8 @@
+// think about toggling?
+function colorValidation() {
+    if (credentials.password.length > 8 && credentials.password.length < 15) {
+        registerForm.elements.password.classList.toggle('strong')
+    } else {
+        registerForm.elements.password.classList.toggle('weak')
+    }
+}
