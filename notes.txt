@@ -1,0 +1,59 @@
+    console.dir(e)
+    console.log(registerForm.elements.username.value)
+    console.log(registerForm.elements.password.value)
+
+
+function passwordValidation() {
+    if (credentials.password.length < 8) {
+        console.log('Password does not meet the minnimum length requirement (8 characters)')
+        if (
+        !credentials.username.includes("@") ||
+        !credentials.username.includes("!") ||
+        !credentials.username.includes("£") ||
+        !credentials.username.includes("$") ||
+        !credentials.username.includes("%") ||
+        !credentials.username.includes("&")
+        ) {
+            console.log(`The password needs to include one of the following special characters ${passwordValues.join(' ')}`)
+        }
+    } else {
+        console.log('You have created the Password successfully!')
+    }
+}
+
+
+function passwordValidation() {
+    if (
+        credentials.password.length < 8 &&
+        !credentials.password.includes("@") ||
+        !credentials.password.includes("!") ||
+        !credentials.password.includes("£") ||
+        !credentials.password.includes("$") ||
+        !credentials.password.includes("%") ||
+        !credentials.password.includes("&")   
+    ) {
+        console.log('The password needs to be more than 8 characters and include special characters')
+    } else {
+        console.log('password created successfully!')
+    }
+}
+
+
+function passwordValidation() {
+    if (credentials.password.length < 8) {
+        console.log('The password needs to be more than 8 characters ')
+    }
+    else {
+    if (!credentials.password.includes("@")) {
+        console.log('Password requires special characters')
+    }
+    else {
+    if(credentials.password.indexOf(' ') === -1) {
+        console.log('No space characters can be used')
+    }
+    else {
+            console.log('Password has met all requirements!')
+    }
+} 
+    }
+}
