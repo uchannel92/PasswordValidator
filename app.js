@@ -22,6 +22,7 @@ registerForm.addEventListener('submit', function(e){
 
     usernameValidation()
     passwordValidation()
+    alertCorrectUsername()
 })
 
 function usernameValidation() {
@@ -74,5 +75,11 @@ function logPassword() {
     document.body.append(message)
 }
 
+
+function alertCorrectUsername() {
+    if (credentials.username.length >= 8 ) {
+        alert('correct')
+    }
+}
 // link it to password - if message valid it's green?
 // if not valid it's red?
