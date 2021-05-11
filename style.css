@@ -1,3 +1,15 @@
 .color {
     color: green;
 }
+
+.strong {
+    outline-color: seagreen;
+}
+
+.average {
+    outline-color: #feca1d;
+}
+
+.weak {
+    outline-color: tomato;
+}

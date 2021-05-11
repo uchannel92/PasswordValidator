@@ -20,9 +20,13 @@ registerForm.addEventListener('submit', function(e){
     credentials.username = registerForm.elements.username.value;
     credentials.password = registerForm.elements.password.value;
 
+    registerForm.elements.username.value = ''
+    registerForm.elements.password.value = ''
+
     usernameValidation()
     passwordValidation()
-    alertCorrectUsername()
+    // isPasswordStrong()
+
 })
 
 function usernameValidation() {
@@ -38,16 +42,63 @@ function passwordValidation() {
     if (
     credentials.password.length > 8 && 
     credentials.password.includes("@") &&
-    credentials.password.indexOf(' ') === -1
+    credentials.password.indexOf(' ') === -1 &&
+    credentials.password.includes(1)
     ) {
         console.log('Password is valid')
 
     } else {
-        console.log(`Password needs to be a minnimum of 8 characters. Password needs to include the @ key. Password cannot includes any spaces.`)
+        console.log(`Password needs to be a minnimum of 8 characters. Password needs to include the @ key. Password cannot includes any spaces.
+        Password requires numbers`)
     }
     
 }
 
+// function isPasswordStrong() {
+//     if (credentials.password.length >= 8) {
+//         registerForm.elements.password.classList.toggle('strong')
+//     }
+//     if (credentials.password.length >= 4 && credentials.password.length < 8) {
+//         registerForm.elements.password.classList.toggle('average')
+//     }
+//     else {
+//         registerForm.elements.password.classList.toggle('weak')
+//     }
+// }
+
+let errMsg = document.createElement('p')
+errMsg.textContent = 'This value cannot be left empty'
+
+registerForm.addEventListener('input', isValid)
+
+function isValid() {
+    if (registerForm.elements.password.value.length === 0) {
+        document.body.append(errMsg)
+    }
+    if (
+        registerForm.elements.password.value.length > 0 &&
+        registerForm.elements.password.value.length < 4) {
+        registerForm.elements.password.classList.add('weak')
+        registerForm.elements.password.classList.remove('strong')
+        document.body.removeChild(errMsg)
+        console.log('less than 2')
+    }
+    if(
+        registerForm.elements.password.value.length >= 4 && 
+        registerForm.elements.password.value.length < 8)
+    {
+        registerForm.elements.password.classList.remove('weak')
+        registerForm.elements.password.classList.remove('strong')  
+        registerForm.elements.password.classList.add('average')   
+        console.log(`currently it is ${registerForm.elements.password.value.length}`)
+    }
+    if(registerForm.elements.password.value.length >= 8)
+    {
+        registerForm.elements.password.classList.remove('average')   
+        registerForm.elements.password.classList.add('strong')
+        console.log(`currently it is ${registerForm.elements.password.value.length}`)
+    }
+}
 
 // if the password is less than 8 alert
 // if the password does not includes special characters alert
@@ -75,11 +126,5 @@ function logPassword() {
     document.body.append(message)
 }
 
-
-function alertCorrectUsername() {
-    if (credentials.username.length >= 8 ) {
-        alert('correct')
-    }
-}
 // link it to password - if message valid it's green?
 // if not valid it's red?
