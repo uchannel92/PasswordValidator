@@ -25,7 +25,7 @@ registerForm.addEventListener('submit', function(e){
 
     usernameValidation()
     passwordValidation()
-    // isPasswordStrong()
+    knowPasswordLength()
 
 })
 
@@ -151,3 +151,18 @@ function revertPassword() {
 
 // Add some text that will let the user know how many characters the current password is
 // input event listener and string length property?
+
+registerForm.addEventListener('input', knowPasswordLength)
+
+function knowPasswordLength() {
+
+    let span = document.querySelector('span')
+    let count = registerForm.elements.password.value.length;
+
+    span.textContent = count
+
+    if (registerForm.elements.password.value.length === 0) {
+        span.textContent = ':)'
+    }
+
+}
