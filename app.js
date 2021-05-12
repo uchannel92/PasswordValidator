@@ -20,8 +20,8 @@ registerForm.addEventListener('submit', function(e){
     credentials.username = registerForm.elements.username.value;
     credentials.password = registerForm.elements.password.value;
 
-    registerForm.elements.username.value = ''
-    registerForm.elements.password.value = ''
+    // registerForm.elements.username.value = ''
+    // registerForm.elements.password.value = ''
 
     usernameValidation()
     passwordValidation()
@@ -41,30 +41,33 @@ function usernameValidation() {
 function passwordValidation() {
     if (
     credentials.password.length > 8 && 
-    credentials.password.includes("@") &&
     credentials.password.indexOf(' ') === -1 &&
-    credentials.password.includes(1)
+    credentials.password.includes("@") ||
+    credentials.password.includes("!") ||
+    credentials.password.includes("$") ||
+    credentials.password.includes("£") ||
+    credentials.password.includes("&") ||
+    credentials.password.includes("%") ||
+    credentials.password.includes(0) || 
+    credentials.password.includes(1) || 
+    credentials.password.includes(2) || 
+    credentials.password.includes(3) || 
+    credentials.password.includes(4) || 
+    credentials.password.includes(5) ||
+    credentials.password.includes(6) ||
+    credentials.password.includes(7) ||
+    credentials.password.includes(8) ||
+    credentials.password.includes(9)
     ) {
         console.log('Password is valid')
 
     } else {
-        console.log(`Password needs to be a minnimum of 8 characters. Password needs to include the @ key. Password cannot includes any spaces.
-        Password requires numbers`)
+        console.log(`Password needs to be a minnimum of 8 characters. Password needs to include a special character ${passwordValues.join(' or ')}. Password cannot includes any spaces.
+        Password requires a number`)
     }
     
 }
 
-// function isPasswordStrong() {
-//     if (credentials.password.length >= 8) {
-//         registerForm.elements.password.classList.toggle('strong')
-//     }
-//     if (credentials.password.length >= 4 && credentials.password.length < 8) {
-//         registerForm.elements.password.classList.toggle('average')
-//     }
-//     else {
-//         registerForm.elements.password.classList.toggle('weak')
-//     }
-// }
 
 let errMsg = document.createElement('p')
 errMsg.textContent = 'This value cannot be left empty'
@@ -72,7 +75,7 @@ errMsg.textContent = 'This value cannot be left empty'
 registerForm.addEventListener('input', isValid)
 
 function isValid() {
-    if (registerForm.elements.password.value.length === 0) {
+    if (registerForm.elements.password.value === '') {
         document.body.append(errMsg)
     }
     if (
@@ -126,5 +129,25 @@ function logPassword() {
     document.body.append(message)
 }
 
-// link it to password - if message valid it's green?
-// if not valid it's red?
+
+// preview password
+let previewBtn = document.querySelector('#v2')
+let hideBtn = document.querySelector('#v3')
+
+previewBtn.addEventListener('click', previewPassword)
+hideBtn.addEventListener('click', revertPassword)
+
+function previewPassword() {
+    let inputs = document.querySelectorAll('input')
+    let passwordInput = inputs[1]
+    passwordInput.setAttribute('type', 'text')
+}
+
+function revertPassword() {
+    let inputs = document.querySelectorAll('input')
+    let passwordInput = inputs[1]
+    passwordInput.setAttribute('type', 'password')
+}
+
+// Add some text that will let the user know how many characters the current password is
+// input event listener and string length property?
