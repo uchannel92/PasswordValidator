@@ -1,9 +1,15 @@
-.strong {
-    border: 2px solid chartreuse;
-    border-radius: 3px;
+.color {
+    color: green;
 }
 
-.weak { 
-    border: 2px solid #feca1d;
-    border-radius: 3px;
+.strong {
+    outline-color: seagreen;
+}
+
+.average {
+    outline-color: #feca1d;
+}
+
+.weak {
+    outline-color: tomato;
 }
